@@ -1,5 +1,6 @@
 //jshint esversion:6
 
+dotenv().config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
@@ -12,7 +13,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-shagun:mlFo5VZaCqVNLegE@todolistdb-qkdea.mongodb.net/todolistDB?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGO, {
   useNewUrlParser : true,
   useUnifiedTopology: true,
   useFindAndModify: false
